@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #222; }
+    .slider { width: 90%; max-width: 600px; overflow: hidden; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; }
+    .slides { display: flex; transition: transform 0.5s ease-in-out; }
+    .slides img { width: 100%; border-radius: 10px; }
+    .btns { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+    .btns button { background: rgba(0,0,0,0.4); border: none; color: white; font-size: 24px; padding: 8px 12px; cursor: pointer; border-radius: 50%; }
+  </style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slides" id="slider">
+    <img src="https://picsum.photos/id/1015/800/400" />
+    <img src="https://picsum.photos/id/1016/800/400" />
+    <img src="https://picsum.photos/id/1018/800/400" />
+  </div>
+  <div class="btns">
+    <button onclick="slide(-1)">‹</button>
+    <button onclick="slide(1)">›</button>
+  </div>
+</div>
+
+<script>
+  let i = 0;
+  function slide(dir) {
+    const s = document.getElementById('slider');
+    const count = s.children.length;
+    i = (i + dir + count) % count;
+    s.style.transform = `translateX(-${i * 100}%)`;
+  }
+</script>
+
+</body>
+</html>
